@@ -150,7 +150,7 @@ function renderTimeline() {
       card.type = "button";
       card.dataset.index = photo.index;
       card.innerHTML = `
-        <img src="${photo.src}" loading="lazy" alt="${formatDate(photo.date)}" />
+        <img src="${photo.thumb || photo.src}" loading="lazy" alt="${formatDate(photo.date)}" />
         <time datetime="${photo.date}">${formatDate(photo.date)}</time>
       `;
       card.addEventListener("click", () => openLightbox(photo.index));
@@ -358,14 +358,15 @@ function wrapIndex(index) {
 }
 
 function getImage(photo) {
-  if (imageCache.has(photo.src)) return imageCache.get(photo.src);
+  const imageSrc = photo.thumb || photo.src;
+  if (imageCache.has(imageSrc)) return imageCache.get(imageSrc);
   const promise = new Promise((resolve) => {
     const img = new Image();
     img.onload = () => resolve(img);
     img.onerror = () => resolve(new Image());
-    img.src = photo.src;
+    img.src = imageSrc;
   });
-  imageCache.set(photo.src, promise);
+  imageCache.set(imageSrc, promise);
   return promise;
 }
 

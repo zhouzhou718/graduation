@@ -11,5 +11,8 @@
 - `photos.json`
 - `music.m4a`
 - `photos/`
+- `thumbs/`
 
 上传完成后，在仓库 Settings -> Pages 中开启 GitHub Pages，选择 `main` 分支和根目录 `/`。
+
+页面展示会优先加载 `thumbs/` 缩略图，点击查看时再加载 `photos/` 原图。
