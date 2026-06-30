@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>祝满满毕业快乐</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <h1><span aria-hidden="true">🎓✨</span> 祝满满毕业快乐 <span aria-hidden="true">🌟🎈</span></h1>
+      </header>
+
+      <nav class="tabs" aria-label="展示方式">
+        <button class="tab is-active" type="button" data-view="word">照片墙</button>
+        <button class="tab" type="button" data-view="timeline">时间轴</button>
+      </nav>
+      <button class="music-button" id="musicToggle" type="button" aria-label="播放背景音乐">♪ 播放音乐</button>
+      <audio id="bgMusic" src="music.m4a" loop preload="metadata"></audio>
+
+      <section class="view is-active" id="wordView" aria-label="照片墙">
+        <div class="word-stage">
+          <canvas id="wordCanvas" aria-label="由照片拼成的毕业快乐"></canvas>
+          <div class="hint">点击任意小照片查看当天记忆</div>
+        </div>
+      </section>
+
+      <section class="view" id="timelineView" aria-label="时间轴">
+        <div class="term-nav" id="termNav" aria-label="学期快速定位"></div>
+        <div class="timeline" id="timeline"></div>
+      </section>
+    </main>
+
+    <dialog class="lightbox" id="lightbox">
+      <button class="close-button" id="closeLightbox" type="button" aria-label="关闭">×</button>
+      <button class="light-nav light-prev" id="lightPrev" type="button" aria-label="上一张">‹</button>
+      <figure>
+        <img id="lightboxImage" alt="" />
+        <figcaption>
+          <strong id="lightboxDate"></strong>
+          <span id="lightboxIndex"></span>
+        </figcaption>
+      </figure>
+      <button class="light-nav light-next" id="lightNext" type="button" aria-label="下一张">›</button>
+    </dialog>
+
+    <script src="photos-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
